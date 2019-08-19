@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es2018", "dom", "webworker"],
+    "sourceMap": true,
+    "jsx": "react",
+    "strict": true,
+    "moduleResolution": "node",
+    "declaration": false,
+    "noStrictGenericChecks": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "noImplicitThis": false,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "paths": {
+      "modules/*": ["./src/modules/*"],
+      "*": ["./src/*"]
+    },
+    "types": [
+      "node",
+      "react",
+      "react-dom",
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
+  },
+  "include": ["./stories/**/*", "./src/**/*"]
+}
