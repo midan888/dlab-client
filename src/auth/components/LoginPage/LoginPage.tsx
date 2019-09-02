@@ -3,11 +3,19 @@ import LoginForm from './LoginForm';
 import {
   Root,
 } from './LoginPage.styles';
+import { Redirect, RouteComponentProps } from 'react-router';
+import connectStore, { StateProps } from './connectStore';
 
-const LoginPage = () => (
-  <Root>
-    <LoginForm />
-  </Root>
-);
+interface Props extends RouteComponentProps, StateProps {}
 
-export default LoginPage;
+const LoginPage = ({ history, token }: Props) => {
+  return token ? (
+    <Redirect to="/" />
+  ) : (
+    <Root>
+      <LoginForm/>
+    </Root>
+  );
+};
+
+export default connectStore(LoginPage);

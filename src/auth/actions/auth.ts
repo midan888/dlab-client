@@ -6,9 +6,6 @@ export enum Action {
   UpdateToken = 'UpdateToken',
 }
 
-export type AuthActions = ReturnType<typeof updateUser> |
-  ReturnType<typeof updateToken>;
-
 export const updateUser = (user: User) => createAction(
   Action.UpdateUser,
   user,

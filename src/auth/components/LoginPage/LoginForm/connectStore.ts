@@ -6,15 +6,17 @@ import { ServerValidationError } from 'core/errors';
 export interface StateProps {
   serverError: string;
   validationErrors: ServerValidationError[];
+  token: string;
 }
 
 export interface DispatchProps {
   login: typeof login;
 }
 
-const mapState = ({ server }: AppState): StateProps => ({
+const mapState = ({ server, auth }: AppState): StateProps => ({
   serverError: server.serverError,
   validationErrors: server.validationErrors,
+  token: auth.token,
 });
 
 const mapDispatch: DispatchProps = {

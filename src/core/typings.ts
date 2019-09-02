@@ -7,4 +7,4 @@ export interface AppState {
   auth: AuthState;
 }
 
-export type ThunkResult<R> = ThunkAction<R, AppState, undefined, any>;
+export type ThunkResult<R> = ThunkAction<R, AppState, any, any>;

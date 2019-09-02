@@ -1,7 +1,7 @@
-import { AuthState } from './typings';
-import { AuthActions, Action } from './actions/auth';
+import { AuthState, AuthActions } from './typings';
+import { Action } from './actions/auth';
 
-const initialState = {
+export const initialState = {
   user: {
     fullName: '',
     email: '',

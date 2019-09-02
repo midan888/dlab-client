@@ -1,5 +1,5 @@
 import React from 'react';
-import Popover from 'react-tiny-popover'
+import Popover from 'react-tiny-popover';
 import {
   Icon,
   UserCard,
@@ -10,12 +10,15 @@ import {
   ListItem,
   ListItemText,
 } from './Account.styles';
+import connectStore, { StateProps, DispatchProps } from './connectStore';
 
 interface State {
   show: boolean;
 }
 
-class Account extends React.Component<{}, State> {
+interface Props extends StateProps, DispatchProps {}
+
+class Account extends React.Component<Props, State> {
   state = {
     show: false,
   };
@@ -30,6 +33,7 @@ class Account extends React.Component<{}, State> {
 
   render() {
     const { show } = this.state;
+    const { email, fullName, logout } = this.props;
 
     return (
       <div>
@@ -43,14 +47,14 @@ class Account extends React.Component<{}, State> {
               <UserCard>
                 <Icon />
                 <UserInfoWrap>
-                  <UserName>Rachel Green</UserName>
-                  <Email>rachel84@gmail.com</Email>
+                  <UserName>{fullName}</UserName>
+                  <Email>{email}</Email>
                 </UserInfoWrap>
               </UserCard>
               <ListItem>
                 <ListItemText>Account Settings</ListItemText>
               </ListItem>
-              <ListItem>
+              <ListItem onClick={logout}>
                 <ListItemText>Logout</ListItemText>
               </ListItem>
             </PopoverRoot>
@@ -63,4 +67,4 @@ class Account extends React.Component<{}, State> {
   }
 }
 
-export default Account;
+export default connectStore(Account);

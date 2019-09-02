@@ -1,7 +1,6 @@
-import { ServerState, Action } from './typings';
-import { ServerActions } from './actions';
+import { ServerState, Action, ServerActions } from './typings';
 
-const initialState: ServerState = {
+export const initialState = {
   validationErrors: [],
   serverError: '',
 };
