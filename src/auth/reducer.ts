@@ -1,20 +1,27 @@
-import { AuthState, Action, AuthAction } from './typings';
+import { AuthState } from './typings';
+import { AuthActions, Action } from './actions/auth';
 
 const initialState = {
   user: {
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
     password: '',
+    id: '',
   },
+  token: '',
 };
 
-const reducer = (state: AuthState = initialState, action: AuthAction) => {
+const reducer = (state: AuthState = initialState, action: AuthActions): AuthState => {
   switch (action.type) {
     case Action.UpdateUser:
       return {
         ...state,
         user: action.payload,
+      };
+    case Action.UpdateToken:
+      return {
+        ...state,
+        token: action.payload,
       };
     default:
       return state;

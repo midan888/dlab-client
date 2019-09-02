@@ -3,12 +3,15 @@ import {
   Root,
   Input,
   Label,
+  ErrorMessage,
 } from './TextField.styles';
 
 interface Props {
   label: string;
   value: string;
   placeholder?: string;
+  error?: boolean;
+  errorMessage?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -17,14 +20,17 @@ const TextField = ({
   onChange,
   placeholder,
   label,
+  error,
+  errorMessage,
 }: Props) => (
-  <Root>
+  <Root className={errorMessage || error ? 'error' : ''}>
     <Input
       onChange={onChange}
       placeholder={placeholder}
       value={value}
     />
     <Label>{label}</Label>
+    <ErrorMessage>{errorMessage || ''}</ErrorMessage>
   </Root>
 );
 

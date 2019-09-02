@@ -1,16 +1,24 @@
 import { connect } from 'react-redux';
-import { createUser } from 'auth/thunks/createUser';
+import { login } from 'auth/thunks/login';
+import { AppState } from 'core/typings';
+import { ServerValidationError } from 'core/errors';
 
-export interface StateProps {}
-
-export interface DispatchProps {
-  createUser: typeof createUser;
+export interface StateProps {
+  serverError: string;
+  validationErrors: ServerValidationError[];
 }
 
-const mapState = () => ({});
+export interface DispatchProps {
+  login: typeof login;
+}
+
+const mapState = ({ server }: AppState): StateProps => ({
+  serverError: server.serverError,
+  validationErrors: server.validationErrors,
+});
 
 const mapDispatch: DispatchProps = {
-  createUser,
+  login,
 };
 
-export default connect<StateProps, DispatchProps>(mapState, mapDispatch);
+export default connect(mapState, mapDispatch);

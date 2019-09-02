@@ -30,6 +30,7 @@
       "node",
       "react",
       "react-dom",
+      "recompose"
     ],
     "typeRoots": [
       "./node_modules/@types"

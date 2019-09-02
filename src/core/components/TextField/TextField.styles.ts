@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Typography from 'core/components/Typography';
 
 export const Root = styled.div`
   position:relative;
@@ -20,6 +21,10 @@ export const Input = styled.input`
     border: 2px solid #2a7bbf;
     color: #272727;
   }
+
+  .error & {
+    border-color: ${({ theme }) => theme.errorColor};
+  }
 `;
 
 export const Label = styled.label`
@@ -34,4 +39,16 @@ export const Label = styled.label`
   ${Input}:focus ~ & {
     color: #2a7bbf;
   }
+
+  .error & {
+    color: ${({ theme }) => theme.errorColor}!important;
+  }
+`;
+
+export const ErrorMessage = styled(Typography)`
+  color: ${({ theme }) => theme.errorColor};
+  font-size: 12px;
+  min-height: 12px;
+  padding-top: 4px;
+  padding-left: 4px;
 `;
