@@ -10,4 +10,6 @@ export const Root = styled.div`
 export const LogoWrap = styled.div`
   height: 80px;
   background-color: #192D37;
+  padding: 16px;
+  box-sizing: border-box;
 `;

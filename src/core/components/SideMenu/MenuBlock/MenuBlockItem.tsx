@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkWrap } from 'core/components/Routes/Link';
 import {
   ItemRoot,
   ItemText,
@@ -6,12 +7,15 @@ import {
 
 interface Props {
   text: string;
+  to: string;
 }
 
-const MenuBlockItem = ({ text }: Props) => (
-  <ItemRoot>
-    <ItemText>{text}</ItemText>
-  </ItemRoot>
+const MenuBlockItem = ({ text, to }: Props) => (
+  <LinkWrap to={to}>
+    <ItemRoot>
+      <ItemText>{text}</ItemText>
+    </ItemRoot>
+  </LinkWrap>
 );
 
 export default MenuBlockItem;

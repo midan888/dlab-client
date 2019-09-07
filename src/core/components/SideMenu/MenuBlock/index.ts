@@ -6,4 +6,3 @@ export {
 };
 
 export default MenuBlock;
-

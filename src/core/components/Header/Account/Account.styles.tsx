@@ -18,7 +18,11 @@ export const Icon = styled.img.attrs({ src: accountIcon })`
 export const PopoverRoot = styled.div`
   width: 304px;
   background-color: #ffffff;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
 `;
 
 export const UserCard = styled.div`
@@ -59,4 +63,8 @@ export const ListItemText = styled(Typography)`
   line-height: 20px;
   font-weight: 300;
   padding: 0 24px;
+`;
+
+export const Root = styled.div`
+  position: relative;
 `;

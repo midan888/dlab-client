@@ -1,15 +1,18 @@
+import { get } from 'core/httpClient';
 
-export const getHost = () => {
-  return 'http://localhost:4000';
-};
+interface SearchUsersResponse {
+  result: SearchUsersResponseItem[];
+}
 
-export const getRequest = async <T>(path: string):Promise<T> => {
-  const res = await fetch(`${getHost()}/${path}`);
-  return await res.json();
-};
+interface SearchUsersResponseItem {
+  email: string;
+  fullName: string;
+  id: number;
+  password: string;
+  updated_at: string | null;
+  created_at: string | null;
+}
 
-export const getUsers = async () => {
-  const res = await getRequest('users');
-
-  return res
+export const searchUsers = () => {
+  return get<SearchUsersResponse>('/users');
 };

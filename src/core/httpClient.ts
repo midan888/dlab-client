@@ -13,5 +13,3 @@ export const post = <T>(path: string, data: object): Promise<T> => {
 export const get = <T>(path: string): Promise<T> => {
   return ky.get(buildUrl(path)).json();
 };
-
-

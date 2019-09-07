@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Redirect, Route, RouteProps } from 'react-router-dom';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
 import Header from '../Header';
 import SideMenu from '../SideMenu';
 import styled from 'styled-components';
@@ -12,6 +12,11 @@ const Container = styled.div`
 
 const Content = styled.div`
   width: 100%;
+  background-color: #F5F5F5;
+`;
+
+const Body = styled.div`
+  padding: 24px;
 `;
 
 interface Props extends StateProps {
@@ -21,24 +26,19 @@ interface Props extends StateProps {
 }
 
 const RouteLayout = ({ component: Component, token, ...rest }: Props) => {
-  const renderRoute = useCallback((props: RouteProps) => {
-    return (
-      <Container>
-        <SideMenu />
-        <Content>
-          <Header />
-          <Component {...props} />
-        </Content>
-      </Container>
-    );
-  }, []);
-
   return token ? (
     (
-      <Route
-        {...rest}
-        render={renderRoute}
-      />
+      <Route {...rest}>
+        <Container>
+          <SideMenu />
+          <Content>
+            <Header />
+            <Body>
+              <Component />
+            </Body>
+          </Content>
+        </Container>
+      </Route>
     )
   ) : (
     <Redirect to="/login" />

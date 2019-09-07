@@ -1,5 +1,5 @@
 import { ServerValidationError } from 'core/errors';
-import { updateServerError, updateValidationErrors } from 'core/server/actions';
+import { updateServerError, updateValidationErrors } from 'server/actions';
 
 export interface ServerState {
   validationErrors: ServerValidationError[];

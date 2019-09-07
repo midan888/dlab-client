@@ -1,5 +1,13 @@
-import { AuthState, AuthActions } from './typings';
-import { Action } from './actions/auth';
+import { Action, updateToken, updateUser } from './actions/auth';
+import { User } from './models';
+
+export interface AuthState {
+  user: User;
+  token: string;
+}
+
+export type AuthActions = ReturnType<typeof updateUser> |
+  ReturnType<typeof updateToken>;
 
 export const initialState = {
   user: {

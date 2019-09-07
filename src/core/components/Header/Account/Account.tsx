@@ -1,5 +1,6 @@
 import React from 'react';
-import Popover from 'react-tiny-popover';
+import compose from 'recompose/compose';
+import { LinkWrap } from 'core/components/Routes/Link';
 import {
   Icon,
   UserCard,
@@ -9,6 +10,7 @@ import {
   Email,
   ListItem,
   ListItemText,
+  Root,
 } from './Account.styles';
 import connectStore, { StateProps, DispatchProps } from './connectStore';
 
@@ -23,26 +25,42 @@ class Account extends React.Component<Props, State> {
     show: false,
   };
 
-  handleMouseOver = () => {
+  rootRef = React.createRef<HTMLDivElement>();
+
+  componentDidMount(): void {
+    document.addEventListener('click', this.handleDocumentClick);
+  }
+
+  componentWillUnmount(): void {
+    document.removeEventListener('click', this.handleDocumentClick);
+  }
+
+  handleIconClick = () => {
     this.setState({ show: true });
   };
 
-  handleMouseLeave = () => {
+  handleItemClick = () => {
     this.setState({ show: false });
   };
+
+  handleDocumentClick = (e: MouseEvent) => {
+    const { current } = this.rootRef;
+
+    if (current && e.target && current.contains(e.target as Element)) {
+      return;
+    }
+
+    this.setState({ show: false });
+  }
 
   render() {
     const { show } = this.state;
     const { email, fullName, logout } = this.props;
 
     return (
-      <div>
-        <Popover
-          isOpen={show}
-          position={['bottom']}
-          onClickOutside={this.handleMouseLeave}
-          containerStyle={{ boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.25)' }}
-          content={() => (
+      <Root ref={this.rootRef}>
+        {
+          show && (
             <PopoverRoot>
               <UserCard>
                 <Icon />
@@ -51,20 +69,28 @@ class Account extends React.Component<Props, State> {
                   <Email>{email}</Email>
                 </UserInfoWrap>
               </UserCard>
-              <ListItem>
-                <ListItemText>Account Settings</ListItemText>
-              </ListItem>
+              <LinkWrap to="/profileEdit">
+                <ListItem onClick={this.handleItemClick}>
+                  <ListItemText>Edit profile</ListItemText>
+                </ListItem>
+              </LinkWrap>
+              <LinkWrap to="/resetPassword">
+                <ListItem onClick={this.handleItemClick}>
+                  <ListItemText>Change password</ListItemText>
+                </ListItem>
+              </LinkWrap>
               <ListItem onClick={logout}>
                 <ListItemText>Logout</ListItemText>
               </ListItem>
             </PopoverRoot>
-          )}
-        >
-          <Icon onClick={this.handleMouseOver} />
-        </Popover>
-      </div>
+          )
+        }
+        <Icon onClick={this.handleIconClick} />
+      </Root>
     );
   }
 }
 
-export default connectStore(Account);
+export default compose<Props, {}>(
+  connectStore,
+)(Account);

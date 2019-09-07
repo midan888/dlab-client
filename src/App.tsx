@@ -12,6 +12,8 @@ import { theme } from 'core/styles/theme';
 import { getAuthToken } from 'auth/storage';
 import { updateToken, updateUser } from 'auth/actions/auth';
 import { decrypt } from 'auth/token';
+import Profile from 'auth/components/Profile';
+import UserList from 'users/components/UsersList/UserList';
 
 loadDict();
 
@@ -42,12 +44,14 @@ const App = () => {
             <Switch>
               <RouteLayout path="/" exact={true} component={Home} />
               <Route path="/login" exact={true} component={LoginPage} />
+              <RouteLayout path="/profile" exact={true} component={Profile} />
+              <RouteLayout path="/users" exact={true} component={UserList} />
             </Switch>
           </Container>
         </BrowserRouter>
       </ThemeProvider>
     </Provider>
   );
-}
+};
 
 export default App;
