@@ -20,3 +20,16 @@ export const hasValidationError = (errors: ServerValidationError[], param: strin
 
   return Boolean(error);
 };
+
+export class ValidationError extends Error {
+  param: string;
+  msg: string;
+
+  constructor(param: string, msg: string) {
+    super(msg);
+    this.msg = msg;
+    this.param = param;
+
+    Object.setPrototypeOf(this, ValidationError.prototype);
+  }
+}

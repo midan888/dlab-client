@@ -9,5 +9,6 @@ export const Root = styled.button`
   color: #fff;
   font-weight: 300;
   outline: none;
-  width: 100%;
+  padding: 0 16px;
+  cursor: pointer;
 `;

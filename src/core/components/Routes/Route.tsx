@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, RouteComponentProps, RouteProps } from 'react-router-dom';
 import Header from '../Header';
 import SideMenu from '../SideMenu';
 import styled from 'styled-components';
@@ -19,26 +19,29 @@ const Body = styled.div`
   padding: 24px;
 `;
 
-interface Props extends StateProps {
-  exact: boolean;
-  path: string;
+interface Props extends StateProps, RouteProps {
+  exact?: boolean;
+  path?: string;
   component: React.ComponentType<any>;
 }
 
 const RouteLayout = ({ component: Component, token, ...rest }: Props) => {
   return token ? (
     (
-      <Route {...rest}>
-        <Container>
-          <SideMenu />
-          <Content>
-            <Header />
-            <Body>
-              <Component />
-            </Body>
-          </Content>
-        </Container>
-      </Route>
+      <Route
+        {...rest}
+        render={(props: RouteComponentProps) => (
+          <Container>
+            <SideMenu />
+            <Content>
+              <Header />
+              <Body>
+                <Component {...props} />
+              </Body>
+            </Content>
+          </Container>
+        )}
+      />
     )
   ) : (
     <Redirect to="/login" />

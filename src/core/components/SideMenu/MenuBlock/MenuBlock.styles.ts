@@ -15,20 +15,3 @@ export const Title = styled(Typography)`
   padding-left: 16px;
   margin-bottom: 24px;
 `;
-
-export const ItemRoot = styled.div`
-  height: 40px;
-  cursor: pointer;
-  border-left: 4px solid #2A7BBF;
-  padding-left: 12px;
-
-  &:hover {
-    background-color: #627586;
-  }
-`;
-
-export const ItemText = styled(Typography)`
-  font-size: 16px;
-  color: #fff;
-  line-height: 40px;
-`;

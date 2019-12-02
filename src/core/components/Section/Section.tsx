@@ -1,26 +1,25 @@
-import React, { ReactChildren, ReactChild } from 'react';
-import styled from 'styled-components';
-import Typography from 'core/components/Typography';
-
-const Root = styled.div`
-  padding: 24px;
-  background-color: #fff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-`;
-
-const Title = styled(Typography)`
-  font-size: 20px;
-  padding-bottom: 16px;
-`;
+import React from 'react';
+import {
+  Root,
+  ControlsWrap,
+  Header,
+  Title,
+} from './Section.styles';
 
 interface Props {
-  children: ReactChildren | ReactChild;
+  children: React.ReactNode;
   title: string;
+  controls?: React.ReactNode;
 }
 
-const Section = ({ children, title }: Props) => (
+const Section = ({ children, title, controls }: Props) => (
   <Root>
-    <Title>{title}</Title>
+    <Header>
+      <Title>{title}</Title>
+      <ControlsWrap>
+        {controls}
+      </ControlsWrap>
+    </Header>
     {children}
   </Root>
 );

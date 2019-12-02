@@ -13,7 +13,9 @@ import { getAuthToken } from 'auth/storage';
 import { updateToken, updateUser } from 'auth/actions/auth';
 import { decrypt } from 'auth/token';
 import Profile from 'auth/components/Profile';
-import UserList from 'users/components/UsersList/UserList';
+import NotFound from 'core/components/Routes/NotFound';
+import { UserCrudRoutes } from 'user/userCrud';
+import { ResetPasswordRoutes } from 'user/resetPassword';
 
 loadDict();
 
@@ -45,7 +47,13 @@ const App = () => {
               <RouteLayout path="/" exact={true} component={Home} />
               <Route path="/login" exact={true} component={LoginPage} />
               <RouteLayout path="/profile" exact={true} component={Profile} />
-              <RouteLayout path="/users" exact={true} component={UserList} />
+              <Route path="/users">
+                <UserCrudRoutes />
+              </Route>
+              <Route path="/reset">
+                <ResetPasswordRoutes />
+              </Route>
+              <RouteLayout component={NotFound} />
             </Switch>
           </Container>
         </BrowserRouter>

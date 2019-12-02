@@ -2,7 +2,7 @@ import api from 'auth/api';
 import { updateUser } from 'auth/actions/auth';
 import { ThunkAction } from 'core/typings';
 import { decrypt } from 'auth/token';
-import { processServerError } from '../../server/thunks';
+import { processServerError } from '../../form/thunks';
 import { updateToken } from '../actions/auth';
 import { storeAuthToken } from '../storage';
 

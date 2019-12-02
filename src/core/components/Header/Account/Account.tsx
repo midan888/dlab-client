@@ -74,7 +74,7 @@ class Account extends React.Component<Props, State> {
                   <ListItemText>Edit profile</ListItemText>
                 </ListItem>
               </LinkWrap>
-              <LinkWrap to="/resetPassword">
+              <LinkWrap to="/reset/password">
                 <ListItem onClick={this.handleItemClick}>
                   <ListItemText>Change password</ListItemText>
                 </ListItem>

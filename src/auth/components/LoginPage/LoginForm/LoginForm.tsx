@@ -15,10 +15,11 @@ import {
 } from './LoginForm.styles';
 import connectStore, { StateProps, DispatchProps } from './connectStore';
 import { getValidationError } from 'core/errors';
+import { withFormResponse, FormResponseProps } from 'form/withFormResponse';
 
-interface Props extends StateProps, DispatchProps, WithLocale {}
+interface Props extends StateProps, DispatchProps, WithLocale, FormResponseProps {}
 
-const LoginForm = ({ i18n, login, serverError, validationErrors }: Props) => {
+const LoginForm = ({ i18n, login, errorMessage, validationErrors }: Props) => {
   return (
     <Root>
       <LogoWrap>
@@ -65,7 +66,7 @@ const LoginForm = ({ i18n, login, serverError, validationErrors }: Props) => {
                 )}
               />
             </FieldsWrap>
-            <ErrorMessage>{serverError}</ErrorMessage>
+            <ErrorMessage>{errorMessage}</ErrorMessage>
             <Button onClick={handleSubmit}>
               Submit
             </Button>
@@ -77,6 +78,7 @@ const LoginForm = ({ i18n, login, serverError, validationErrors }: Props) => {
 };
 
 export default compose<Props, {}>(
+  withFormResponse,
   connectStore,
   widthLocale,
 )(LoginForm);

@@ -1,14 +1,20 @@
 import { ThunkAction as ThunkActionVendor, ThunkDispatch as ThunkDispatchVendor } from 'redux-thunk';
-import { ServerState, ServerActions } from 'server/typings';
+import { FormActions, FormState } from 'form/typings';
 import { AuthState, AuthActions } from 'auth/reducer';
-import { UserState, UserActions } from 'users/reducer';
+import { UserState, UserActions } from 'user/userCrud';
+import { ResetPasswordActions, ResetPasswordState } from 'user/resetPassword/reducer';
 
-export type AppActions = UserActions | AuthActions | ServerActions;
+export type AppActions =
+  UserActions |
+  AuthActions |
+  FormActions |
+  ResetPasswordActions;
 
 export interface AppState {
-  server: ServerState;
+  form: FormState;
   auth: AuthState;
   users: UserState;
+  resetPassword: ResetPasswordState;
 }
 
 export type ThunkDispatch = ThunkDispatchVendor<AppState, undefined, AppActions>;
