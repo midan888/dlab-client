@@ -7,10 +7,10 @@ import { updateToken } from '../actions/auth';
 import { storeAuthToken } from '../storage';
 
 export const login = (data: any): ThunkAction<void> => async (dispatch) => {
-  const { email, password, remember } = data;
+  const { email, password } = data;
 
   try {
-    const token = await api.login({ email, password }, remember);
+    const token = await api.login({ email, password });
     const decryptedToken = decrypt(token);
 
     dispatch(updateToken(token));

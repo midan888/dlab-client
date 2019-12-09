@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { loadDict } from 'core/i18n/i18n';
 import LoginPage from 'auth/components/LoginPage';
-import Home from './Home';
 import RouteLayout from 'core/components/Routes/Route';
 import { initReduxStore } from 'core/redux/store';
 import { theme } from 'core/styles/theme';
@@ -44,7 +43,6 @@ const App = () => {
         <BrowserRouter>
           <Container>
             <Switch>
-              <RouteLayout path="/" exact={true} component={Home} />
               <Route path="/login" exact={true} component={LoginPage} />
               <RouteLayout path="/profile" exact={true} component={Profile} />
               <Route path="/users">

@@ -9,7 +9,7 @@ interface AuthRequest {
   password: string;
 }
 
-export const login = async (request: AuthRequest, remember: boolean) => {
+export const login = async (request: AuthRequest) => {
   const { token } = await post<AuthResponse>('auth/login', request);
 
   return token;

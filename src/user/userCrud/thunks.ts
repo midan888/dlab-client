@@ -7,7 +7,7 @@ import {
 import { ThunkAction } from 'core/typings';
 import { updateActiveUser, updateUsers } from './actions';
 import { UserModel } from 'user/models';
-import { processServerError } from 'form/thunks';
+import { processServerError, processSuccessfulRequest } from 'form/thunks';
 import { updateValidationErrors } from 'form/actions';
 
 export const requestSearchUsers = (): ThunkAction<Promise<void>> => async (dispatch) => {
@@ -35,13 +35,18 @@ export const requestUser = (id: string): ThunkAction<Promise<void>> => async (di
 };
 
 export const requestUpdateUser = (data: any): ThunkAction<Promise<void>> => async (dispatch) => {
-  const user = await updateUser({
-    id: data.id,
-    fullName: data.fullName,
-    email: data.email,
-  });
+  try {
+    const user = await updateUser({
+      id: data.id,
+      fullName: data.fullName,
+      email: data.email,
+    });
 
-  dispatch(updateActiveUser(user));
+    dispatch(updateActiveUser(user));
+    dispatch(processSuccessfulRequest('User updated'));
+  } catch (e) {
+    dispatch(processServerError(e));
+  }
 };
 
 export const requestCreateUser = (data: any): ThunkAction<Promise<void>> => async (dispatch) => {
@@ -63,6 +68,7 @@ export const requestCreateUser = (data: any): ThunkAction<Promise<void>> => asyn
     });
 
     dispatch(updateActiveUser(user));
+    dispatch(processSuccessfulRequest('User created'));
   } catch (e) {
     dispatch(processServerError(e));
   }

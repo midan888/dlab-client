@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import Section from 'core/components/Section';
-import compose from 'recompose/compose';
+import { compose } from 'recompose';
 import connectStore, { StateProps, DispatchProps } from './connectStore';
-import { Field, FieldRenderProps } from 'react-final-form';
+import { Field, FieldRenderProps, FormRenderProps } from 'react-final-form';
 import TextField from 'core/components/TextField';
 import { getValidationError } from 'core/errors';
 import Button from 'core/components/Button';
@@ -34,7 +34,7 @@ const NewPasswordPage = ({
         initialValues={{
           token,
         }}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit }: FormRenderProps) => (
           <form onSubmit={handleSubmit}>
             <Field
               name="password"

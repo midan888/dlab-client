@@ -1,4 +1,5 @@
-import { FormActions, Action, FormState } from './typings';
+import { FormActions, FormState } from './typings';
+import { Action } from './actions';
 
 export const initialState = {
   validationErrors: [],

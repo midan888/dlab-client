@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, FieldRenderProps } from 'react-final-form';
+import { Field, FieldRenderProps, FormRenderProps } from 'react-final-form';
 import Form from 'form/components/Form';
 import TextField from 'core/components/TextField';
 import { UserModel } from 'user/models';
@@ -22,7 +22,7 @@ const UserForm = ({ onSubmit, user, hidePassword, validationErrors }: Props) => 
         email: user ? user.email : '',
         id: user ? user.id : 0,
       }}
-      render={({ handleSubmit }) => (
+      render={({ handleSubmit }: FormRenderProps) => (
         <form onSubmit={handleSubmit}>
           <Field
             name="fullName"

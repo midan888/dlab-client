@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import Section from 'core/components/Section';
 import connectStore, { StateProps, DispatchProps } from './connectStore';
-import { Field, FieldRenderProps } from 'react-final-form';
+import { Field, FieldRenderProps, FormRenderProps } from 'react-final-form';
 import TextField from 'core/components/TextField';
 import { getValidationError } from 'core/errors';
 import Button from 'core/components/Button';
@@ -10,7 +10,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 interface Props extends RouteComponentProps<void>, StateProps, DispatchProps {}
 
-const ResetPasswordPage = ({ match, validationErrors, requestResetPasswordToken }: Props) => {
+const ResetPasswordPage = ({ validationErrors, requestResetPasswordToken }: Props) => {
   const handleSubmit = useCallback((data) => {
     requestResetPasswordToken(data.email);
   }, []);
@@ -19,7 +19,7 @@ const ResetPasswordPage = ({ match, validationErrors, requestResetPasswordToken 
     <Section title="Reset password">
       <Form
         onSubmit={handleSubmit}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit }: FormRenderProps) => (
           <form onSubmit={handleSubmit}>
             <Field
               name="email"

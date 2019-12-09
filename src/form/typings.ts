@@ -7,12 +7,6 @@ export interface FormState {
   successMessage: string;
 }
 
-export enum Action {
-  UpdateValidationErrors = 'UpdateValidationErrors',
-  UpdateErrorMessage = 'UpdateErrorMessage',
-  UpdateSuccessMessage = 'UpdateSuccessMessage',
-}
-
 export type FormActions = ReturnType<typeof updateValidationErrors> |
   ReturnType<typeof updateErrorMessage> |
   ReturnType<typeof updateSuccessMessage>;

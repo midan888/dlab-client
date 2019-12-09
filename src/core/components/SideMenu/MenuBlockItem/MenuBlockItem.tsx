@@ -11,7 +11,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const MenuBlockItem = ({ text, to, children }: Props) => {
+const MenuBlockItem = ({ text, to }: Props) => {
   return (
     <ItemRoot>
       <LinkWrap to={to}>

@@ -12,7 +12,7 @@ export interface DispatchProps {
   requestResetPasswordToken: (email: string) => ReturnType<ThunkDispatch>;
 }
 
-const mapState = ({ users, form, resetPassword }: AppState): StateProps => ({
+const mapState = ({ form, resetPassword }: AppState): StateProps => ({
   link: resetPassword.link,
   validationErrors: form.validationErrors,
 });

@@ -26,7 +26,7 @@ const getPlugins = () => {
   const plugins = [
     new HtmlWebpackPlugin({
       template: resolve('public/index.html'),
-      title: 'NG DollHouse',
+      title: 'Client',
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[hash:8].css",

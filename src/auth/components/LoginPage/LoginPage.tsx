@@ -8,12 +8,12 @@ import connectStore, { StateProps } from './connectStore';
 
 interface Props extends RouteComponentProps, StateProps {}
 
-const LoginPage = ({ history, token }: Props) => {
+const LoginPage = ({ token }: Props) => {
   return token ? (
     <Redirect to="/" />
   ) : (
     <Root>
-      <LoginForm/>
+      <LoginForm />
     </Root>
   );
 };

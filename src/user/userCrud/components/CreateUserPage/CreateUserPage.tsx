@@ -6,7 +6,7 @@ import connectStore, { StateProps, DispatchProps } from './connectStore';
 
 interface Props extends RouteComponentProps<void>, StateProps, DispatchProps {}
 
-const CreateUserPage = ({ match, requestUser, user, requestCreateUser, validationErrors }: Props) => {
+const CreateUserPage = ({ requestCreateUser, validationErrors }: Props) => {
   return (
     <Section title="Edit user">
       <UserForm onSubmit={requestCreateUser} validationErrors={validationErrors} />

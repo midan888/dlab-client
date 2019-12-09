@@ -1,6 +1,11 @@
 import { createAction } from 'core/redux/action';
-import { Action } from './typings';
 import { ServerValidationError } from 'core/errors';
+
+export enum Action {
+  UpdateValidationErrors = 'UpdateValidationErrors',
+  UpdateErrorMessage = 'UpdateErrorMessage',
+  UpdateSuccessMessage = 'UpdateSuccessMessage',
+}
 
 export const updateValidationErrors = (errors: ServerValidationError[]) => createAction(
   Action.UpdateValidationErrors,
