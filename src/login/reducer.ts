@@ -1,12 +1,12 @@
-import { Action, updateToken, updateUser } from './actions/auth';
+import { Action, updateToken, updateUser } from './actions';
 import { User } from './models';
 
-export interface AuthState {
+export interface LoginState {
   user: User;
   token: string;
 }
 
-export type AuthActions = ReturnType<typeof updateUser> |
+export type LoginActions = ReturnType<typeof updateUser> |
   ReturnType<typeof updateToken>;
 
 export const initialState = {
@@ -19,7 +19,7 @@ export const initialState = {
   token: '',
 };
 
-const reducer = (state: AuthState = initialState, action: AuthActions): AuthState => {
+const reducer = (state: LoginState = initialState, action: LoginActions): LoginState => {
   switch (action.type) {
     case Action.UpdateUser:
       return {

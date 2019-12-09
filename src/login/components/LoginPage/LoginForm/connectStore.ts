@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login } from 'auth/thunks/login';
+import { login } from 'login/thunks';
 import { AppState } from 'core/typings';
 
 export interface StateProps {
@@ -10,8 +10,8 @@ export interface DispatchProps {
   login: typeof login;
 }
 
-const mapState = ({ auth }: AppState): StateProps => ({
-  token: auth.token,
+const mapState = ({ login }: AppState): StateProps => ({
+  token: login.token,
 });
 
 const mapDispatch: DispatchProps = {

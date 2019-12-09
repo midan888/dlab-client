@@ -1,5 +1,5 @@
 import { createAction } from 'core/redux/action';
-import { User } from '../models';
+import { User } from './models';
 
 export enum Action {
   UpdateUser = 'UpdateUser',

@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware  } from 'redux';
-import authReducer from 'auth/reducer';
+import authReducer from 'login/reducer';
 import formReducer from 'form/reducer';
 import usersReducer from 'user/userCrud/reducer';
 import { reducer as resetPasswordReducer } from 'user/resetPassword/reducer';
@@ -11,7 +11,7 @@ import { AppState } from 'core/typings';
 export const initReduxStore = () => {
   return createStore(
     combineReducers<AppState>({
-      auth: authReducer,
+      login: authReducer,
       form: formReducer,
       users: usersReducer,
       resetPassword: resetPasswordReducer,

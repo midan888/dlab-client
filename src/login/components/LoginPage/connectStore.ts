@@ -5,8 +5,8 @@ export interface StateProps {
   token: string;
 }
 
-const mapState = ({ auth }: AppState): StateProps => ({
-  token: auth.token,
+const mapState = ({ login }: AppState): StateProps => ({
+  token: login.token,
 });
 
 export default connect(mapState);

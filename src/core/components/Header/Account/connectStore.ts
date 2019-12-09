@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { AppState } from 'core/typings';
-import { logout } from 'auth/thunks/logout';
+import { logout } from 'login/thunks';
 
 export interface StateProps {
   fullName: string;
@@ -11,9 +11,9 @@ export interface DispatchProps {
   logout: () => void;
 }
 
-const mapState = ({ auth }: AppState): StateProps => ({
-  fullName: auth.user.fullName,
-  email: auth.user.email,
+const mapState = ({ login }: AppState): StateProps => ({
+  fullName: login.user.fullName,
+  email: login.user.email,
 });
 
 const mapDispatch: DispatchProps = {

@@ -1,10 +1,10 @@
-import api from 'auth/api';
-import { updateUser } from 'auth/actions/auth';
+import api from 'login/api';
+import { updateUser } from 'login/actions';
 import { ThunkAction } from 'core/typings';
-import { decrypt } from 'auth/token';
-import { processServerError } from '../../form/thunks';
-import { updateToken } from '../actions/auth';
-import { storeAuthToken } from '../storage';
+import { decrypt } from 'login/token';
+import { processServerError } from 'form/thunks';
+import { updateToken } from './actions';
+import { storeAuthToken } from './storage';
 
 export const login = (data: any): ThunkAction<void> => async (dispatch) => {
   const { email, password } = data;
@@ -24,4 +24,15 @@ export const login = (data: any): ThunkAction<void> => async (dispatch) => {
   } catch (e) {
     dispatch(processServerError(e));
   }
+};
+
+export const logout = (): ThunkAction<void> => (dispatch) => {
+  dispatch(updateToken(''));
+  dispatch(updateUser({
+    fullName: '',
+    email: '',
+    id: '',
+  }));
+
+  storeAuthToken('');
 };
