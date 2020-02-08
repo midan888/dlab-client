@@ -5,6 +5,7 @@ import TextField from 'core/components/TextField';
 import { UserModel } from 'user/models';
 import Button from 'core/components/Button';
 import { ServerValidationError, getValidationError } from 'core/errors';
+import { Radio } from 'core/components/Radio';
 
 interface Props {
   onSubmit?: any;
@@ -13,7 +14,12 @@ interface Props {
   validationErrors: ServerValidationError[];
 }
 
-const UserForm = ({ onSubmit, user, hidePassword, validationErrors }: Props) => (
+const UserForm = ({
+  onSubmit,
+  user,
+  hidePassword,
+  validationErrors,
+}: Props) => (
   <div>
     <Form
       onSubmit={onSubmit}
@@ -32,6 +38,30 @@ const UserForm = ({ onSubmit, user, hidePassword, validationErrors }: Props) => 
                 value={input.value}
                 errorMessage={getValidationError(validationErrors, 'fullName')}
                 onChange={input.onChange}
+              />
+            )}
+          />
+          <Field
+            name="role"
+            type="radio"
+            render={({ input }: FieldRenderProps<string, HTMLInputElement>) => (
+              <Radio
+                value="admin"
+                name={input.name}
+                label="Admin"
+                onChange={() => {}}
+              />
+            )}
+          />
+          <Field
+            name="role"
+            type="radio"
+            render={({ input }: FieldRenderProps<string, HTMLInputElement>) => (
+              <Radio
+                value="editor"
+                name={input.name}
+                label="Editor"
+                onChange={() => {}}
               />
             )}
           />

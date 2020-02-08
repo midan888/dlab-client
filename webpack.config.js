@@ -1,4 +1,5 @@
 const path = require('path');
+const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const webpack = require('webpack');
@@ -8,6 +9,7 @@ const createStyledComponentsTransformer = require('typescript-plugin-styled-comp
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+dotenv.config();
 
 const styledComponentsTransformer = createStyledComponentsTransformer({
   getDisplayName (filename, bindingName) {
@@ -21,24 +23,6 @@ const styledComponentsTransformer = createStyledComponentsTransformer({
   }
 });
 const resolve = innerPath => path.resolve(__dirname, innerPath);
-
-const getPlugins = () => {
-  const plugins = [
-    new HtmlWebpackPlugin({
-      template: resolve('public/index.html'),
-      title: 'Client',
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].[hash:8].css",
-    }),
-    new webpack.DefinePlugin({
-      PUBLIC_PATH: JSON.stringify(getPublicPath()),
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ];
-
-  return plugins;
-};
 
 const getPublicPath = () => '/';
 
@@ -110,10 +94,26 @@ module.exports = {
     ],
   },
 
-  plugins: getPlugins(),
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolve('public/index.html'),
+      title: 'Client',
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[hash:8].css",
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 
   devServer: {
     hot: true,
+    disableHostCheck: true,
+    host: '0.0.0.0',
+    port: 8080,
     compress: true,
     historyApiFallback: true,
   },

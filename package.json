@@ -5,7 +5,6 @@
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@types/jsonwebtoken": "^8.3.5",
-    "@types/node": "^12.12.15",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
     "@types/react-redux": "^7.1.5",
@@ -18,18 +17,15 @@
     "copy-webpack-plugin": "^5.1.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.3.0",
+    "dotenv": "^8.2.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^5.0.2",
     "final-form": "^4.18.6",
-    "firebase-tools": "^7.9.0",
     "html-webpack-plugin": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
     "ky": "^0.16.1",
-    "material-design-icons": "^3.0.1",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
     "normalize.css": "^8.0.1",
-    "postcss-loader": "^3.0.0",
     "pre-commit": "^1.2.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -37,7 +33,6 @@
     "react-redux": "^7.1.3",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "react-snap": "^1.23.0",
     "recompose": "^0.30.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
@@ -67,17 +62,8 @@
     "clean": "rimraf build",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "npm run clean && cross-env NODE_ENV=production webpack --progress",
-    "deploy": "firebase deploy --project ngdollhouse-ebb79 --token=1/-Q8p1GjdcIRAypyLqT-w3mSi6BTvgdCeYc-tLintEEw",
-    "render-static": "react-snap",
     "test": "jest",
-    "lint:css": "stylelint src/**/*.{ts,tsx}",
-    "tsc": "tsc"
-  },
-  "reactSnap": {
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
+    "lint:css": "stylelint src/**/*.{ts,tsx}"
   },
   "pre-commit": [
     "lint:css"

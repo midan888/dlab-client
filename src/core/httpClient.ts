@@ -1,9 +1,7 @@
 import ky from 'ky';
 
-const API_BASE_URL = 'http://localhost:4000';
-
 const buildUrl = (path: string) => {
-  return `${API_BASE_URL}/${path.replace(/^\//, '')}`;
+  return `${process.env.API_URL}/${path.replace(/^\//, '')}`;
 };
 
 export const post = <T>(path: string, data: object): Promise<T> => {
