@@ -11,6 +11,8 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 dotenv.config();
 
+console.log('API_URL', process.env.API_URL);
+
 const styledComponentsTransformer = createStyledComponentsTransformer({
   getDisplayName (filename, bindingName) {
     const match = filename.match(/(?!.*\/)(?:[^\.]+)/);
