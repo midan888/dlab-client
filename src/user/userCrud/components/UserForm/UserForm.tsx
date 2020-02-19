@@ -1,11 +1,11 @@
 import React from 'react';
-import { Field, FieldRenderProps, FormRenderProps } from 'react-final-form';
+import {Field, FieldRenderProps, FormRenderProps} from 'react-final-form';
 import Form from 'form/components/Form';
 import TextField from 'core/components/TextField';
-import { UserModel } from 'user/models';
+import {Role, UserModel} from 'user/models';
 import Button from 'core/components/Button';
-import { ServerValidationError, getValidationError } from 'core/errors';
-import { Radio } from 'core/components/Radio';
+import {getValidationError, ServerValidationError} from 'core/errors';
+import {Radio} from 'core/components/Radio';
 
 interface Props {
   onSubmit?: any;
@@ -27,6 +27,7 @@ const UserForm = ({
         fullName: user ? user.fullName : '',
         email: user ? user.email : '',
         id: user ? user.id : 0,
+        role: user ? user.role : Role.Editor,
       }}
       render={({ handleSubmit }: FormRenderProps) => (
         <form onSubmit={handleSubmit}>
@@ -43,25 +44,23 @@ const UserForm = ({
           />
           <Field
             name="role"
-            type="radio"
             render={({ input }: FieldRenderProps<string, HTMLInputElement>) => (
               <Radio
-                value="admin"
-                name={input.name}
+                checked={Role.Admin === input.value}
+                value={Role.Admin}
                 label="Admin"
-                onChange={() => {}}
+                onChange={input.onChange}
               />
             )}
           />
           <Field
             name="role"
-            type="radio"
             render={({ input }: FieldRenderProps<string, HTMLInputElement>) => (
               <Radio
-                value="editor"
-                name={input.name}
+                checked={Role.Editor === input.value}
+                value={Role.Editor}
                 label="Editor"
-                onChange={() => {}}
+                onChange={input.onChange}
               />
             )}
           />

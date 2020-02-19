@@ -17,6 +17,7 @@ export const requestSearchUsers = (): ThunkAction<Promise<void>> => async (dispa
     email: item.email,
     fullName: item.fullName,
     id: item.id,
+    role: item.role,
   }));
 
   dispatch(updateUsers(users));
@@ -29,6 +30,7 @@ export const requestUser = (id: string): ThunkAction<Promise<void>> => async (di
     email: res.email,
     fullName: res.fullName,
     id: res.id,
+    role: res.role,
   };
 
   dispatch(updateActiveUser(user));
@@ -40,6 +42,7 @@ export const requestUpdateUser = (data: any): ThunkAction<Promise<void>> => asyn
       id: data.id,
       fullName: data.fullName,
       email: data.email,
+      role: data.role,
     });
 
     dispatch(updateActiveUser(user));
@@ -65,6 +68,7 @@ export const requestCreateUser = (data: any): ThunkAction<Promise<void>> => asyn
       fullName: data.fullName,
       email: data.email,
       password: data.password,
+      role: data.role,
     });
 
     dispatch(updateActiveUser(user));

@@ -28,11 +28,15 @@ const Form = ({
 
   return (
     <Root>
-      <FinalForm
-        onSubmit={onSubmit}
-        initialValues={initialValues}
-        render={render}
-      />
+      {
+        !successMessage && (
+          <FinalForm
+            onSubmit={onSubmit}
+            initialValues={initialValues}
+            render={render}
+          />
+        )
+      }
       <FormResponsePopup
         errorMessage={errorMessage}
         successMessage={successMessage}

@@ -47,6 +47,7 @@ const LoginForm = ({ i18n, login, errorMessage, validationErrors }: Props) => {
                 name="password"
                 render={({ input }: FieldRenderProps<string, HTMLInputElement>) => (
                   <TextField
+                    type="password"
                     label="Password"
                     errorMessage={getValidationError(validationErrors, 'password')}
                     value={input.value}

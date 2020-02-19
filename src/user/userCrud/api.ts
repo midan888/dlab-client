@@ -1,10 +1,11 @@
 import { get, post } from 'core/httpClient';
-import { UserModel } from 'user/models';
+import { UserModel, Role } from 'user/models';
 
 interface UsersResponse {
   email: string;
   fullName: string;
   id: number;
+  role: Role;
   password: string;
   updated_at: string | null;
   created_at: string | null;

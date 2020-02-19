@@ -13,6 +13,7 @@ interface Props {
   error?: boolean;
   errorMessage?: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
 }
 
 const TextField = ({
@@ -22,12 +23,14 @@ const TextField = ({
   label,
   error,
   errorMessage,
+  type,
 }: Props) => (
   <Root className={errorMessage || error ? 'error' : ''}>
     <Input
       onChange={onChange}
       placeholder={placeholder}
       value={value}
+      type={type}
     />
     <Label>{label}</Label>
     <ErrorMessage>{errorMessage || ''}</ErrorMessage>

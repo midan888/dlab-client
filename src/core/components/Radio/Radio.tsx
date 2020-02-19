@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEventHandler} from 'react';
 import {
   Root,
   Input,
@@ -6,19 +6,28 @@ import {
 } from './Radio.styles';
 
 interface Props {
-  value: string;
-  name: string;
+  value: string | number;
+  name?: string;
   label: string;
-  onChange: any;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  checked?: boolean;
 }
 
 export const Radio = ({
   value,
   name,
   label,
+  onChange,
+  checked,
 }: Props) => (
   <Root>
-    <Label htmlFor={value}>{label}</Label>
-    <Input value={value} name={name} type="radio" />
+    <Input
+      value={value}
+      name={name}
+      type="radio"
+      onChange={onChange}
+      checked={checked}
+    />
+    <Label htmlFor={value.toString()}>{label}</Label>
   </Root>
 );
